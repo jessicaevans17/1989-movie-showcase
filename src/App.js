@@ -1,9 +1,13 @@
-import React, { Component } from 'react'
-import HelloWorld from './components/HelloWorld'
+import React, { Component } from "react"
+import Movie from "./components/Movie"
 
 class App extends Component {
   render() {
-    return <HelloWorld />
+    return (
+      <div>
+        <Movie />
+      </div>
+    )
   }
 }
 

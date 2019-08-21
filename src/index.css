@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Gochi+Hand&display=swap");
 
-@import "./assets/backgroundimage.jpg": root {
+root {
   font: 16px / 1 sans-serif;
 }
 
@@ -14,13 +14,33 @@ body {
   background-image: url(./assets/backgroundimage.jpg);
 }
 
+.headline {
+  font-size: 2rem;
+}
+
+.header-pic {
+  height: 5rem;
+  width: auto;
+  margin: 0rem 3rem;
+  padding-top: 1rem;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  margin-top: 1rem;
+  border: dashed rgb(255, 105, 225) 10px;
+}
+
 .movie-box {
   background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 10rem 15rem;
+  margin: 3rem 15rem;
   padding: 0rem 1rem;
+  border: dashed rgb(255, 105, 225) 10px;
 }
 
 .title {
@@ -29,4 +49,5 @@ body {
 
 .plot {
   line-height: 1.5;
+  padding-bottom: 2rem;
 }

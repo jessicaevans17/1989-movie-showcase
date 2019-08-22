@@ -4,7 +4,9 @@ import axios from "axios"
 
 class Movie extends Component {
   state = {
-    movies: []
+    movies: [],
+    gifData: [],
+    currentIndex: 0
   }
 
   callApi = async () => {
@@ -16,6 +18,20 @@ class Movie extends Component {
       movies: response.data.results
     })
     console.log(this.state.movies)
+    this.callGiphyApi()
+  }
+
+  callGiphyApi = async () => {
+    const response = await axios.get(
+      `https://api.giphy.com/v1/gifs/search?api_key=qheDzH9WIQHCJbinFLi7XYVl5tVvv0mC&q=${
+        this.state.movies[this.state.currentIndex].title
+      }&limit=1&offset=0&rating=G&lang=en`
+    )
+    console.log(response)
+    this.setState({
+      gifData: response.data.data[0]
+    })
+    console.log(this.state.gifData)
   }
 
   async componentDidMount() {
@@ -26,7 +42,7 @@ class Movie extends Component {
     return (
       <main>
         <section>
-          {this.state.movies.map(result => {
+          {this.state.movies.map((result, currentIndex) => {
             return (
               <section className="movie-box" key={result.id}>
                 <h2 className="title"> {result.title}</h2>
@@ -35,7 +51,9 @@ class Movie extends Component {
                   src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2${
                     result["poster_path"]
                   }`}
+                  alt={result.title}
                 />
+                <img src={this.state.gifData["bitly_url"]} />
                 <p className="plot">{result.overview}</p>
               </section>
             )

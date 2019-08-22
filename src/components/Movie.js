@@ -18,20 +18,6 @@ class Movie extends Component {
       movies: response.data.results
     })
     console.log(this.state.movies)
-    this.callGiphyApi()
-  }
-
-  callGiphyApi = async () => {
-    const response = await axios.get(
-      `https://api.giphy.com/v1/gifs/search?api_key=qheDzH9WIQHCJbinFLi7XYVl5tVvv0mC&q=${
-        this.state.movies[this.state.currentIndex].title
-      }&limit=1&offset=0&rating=G&lang=en`
-    )
-    console.log(response)
-    this.setState({
-      gifData: response.data.data[0]
-    })
-    console.log(this.state.gifData)
   }
 
   async componentDidMount() {
@@ -53,7 +39,7 @@ class Movie extends Component {
                   }`}
                   alt={result.title}
                 />
-                <img src={this.state.gifData["bitly_url"]} />
+
                 <p className="plot">{result.overview}</p>
               </section>
             )
